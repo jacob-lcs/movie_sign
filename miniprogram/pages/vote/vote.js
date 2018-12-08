@@ -1,4 +1,4 @@
-// miniprogram/pages/about_movie/index.js
+// miniprogram/pages/vote/vote.js
 Page({
 
   /**

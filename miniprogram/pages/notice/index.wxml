@@ -1,2 +1,79 @@
 <!--miniprogram/pages/notice/index.wxml-->
-<text>miniprogram/pages/notice/index.wxml</text>
+<view class='all'>
+  <view class='all_1'>
+
+  </view>
+  <view class='all_2'>
+    <view class='wenben'>
+      <image src='https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/电影_icon.png?sign=a2d9bf23bde12d66e0ac37de48e1a72f&t=1544279778' class='image_title'></image>
+      <text>\n</text>
+
+      <text class='title_wenben'>活动概况\n</text>
+      <text>1.活动对象：热爱舞台的梦想家们
+2.活动目的：选拔优秀演员，艺人
+3.主办单位：《消失的末班车》
+4.活动时间：2018年12月28日起\n</text>
+      <image src='https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/电影_icon.png?sign=a2d9bf23bde12d66e0ac37de48e1a72f&t=1544279778' class='image_title'></image>
+      <text>\n</text>
+      <text class='title_wenben'>比赛流程\n</text>
+      <text>1.参赛者报名参赛，简体截止日期为12月27日（线上），12月29日（线下）
+      
+2.初选阶段（12月28日至30日）上午8.00-下午4.00，评委会8名评委按照比赛要求进行初选，选出初赛优胜选手进入复赛（选手可以开启投票通道）
+
+3.复赛阶段（12月28日至30日）：当天晋级复赛的选手当天安排专业评委场进行比赛，选出决赛选手
+
+4.复活赛（12月31号）：为晋级决赛的成员可再次获得专业评委的点评，并有机会再次进入决赛！\n</text>
+      <image src='https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/电影_icon.png?sign=a2d9bf23bde12d66e0ac37de48e1a72f&t=1544279778' class='image_title'></image>
+      <text>\n</text>
+      <text class='title_wenben'>奖项设置\n</text>
+      <text>1.复赛晋级奖： 剧组认证专业晋级卡，选手专属资料卡，电影周边
+      
+2.决赛晋级奖： 导师认证专业晋级卡，选手专属视频资料卡，专属纪念品，有机会获得经纪公司千余
+
+3.地区优胜奖： 专业大奖权威证书，专属 历程 卡，获得电影出演机会，出品方的团队培训，名师指导，以及经纪公司的签约 
+
+PS:1.凡是参加者，皆有机会成为电影中的你我他
+2.凡晋级的选手均可获得以上对应奖励
+3.在决赛现场微信群里还有红包发哦～
+4.微信投票达888票以上的另有神秘礼物一份\n</text>
+      <image src='https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/电影_icon.png?sign=a2d9bf23bde12d66e0ac37de48e1a72f&t=1544279778' class='image_title'></image>
+      <text>\n</text>
+      <text class='title_wenben'>参赛须知\n</text>
+      <text>1.初赛内容:五人一组，依次进行
+(1).综合素质考察（自我介绍）
+(2).形象气质考察
+(3).影视台词表演考察
+
+2.复赛内容:五人一组，依次进行
+(1).才艺展示
+(2).评委问答
+集体进行:(3).集体短剧配合
+
+3.决赛会另行通知决赛选手比赛内容以及场地
+
+4.初赛不收取任何费用
+复赛280元报名费 你将聆听专业评委的犀利点评  获得《消失的末班车》剧组专属证书
+决赛480元报名费 你将近距离感受制片方的热情，舞台 聚光灯的温度 获得专属决赛证书以及个人比赛视频资料合辑。  
+
+5.为了保证比赛的公平公正，初赛复赛结果当场宣布，当天录入晋级选手信息，办理晋级手续。
+
+6.地址：安徽省合肥市政务区财智中心16楼蓝娱辰影视文化传媒有限公司
+
+7.安徽合肥赛区将在决赛中角逐出 ：
+最佳上镜奖 最具人气奖 最佳新人奖 最具潜力奖等数名优胜选手。\n</text>
+      <image src='https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/电影_icon.png?sign=a2d9bf23bde12d66e0ac37de48e1a72f&t=1544279778' class='image_title'></image>
+      <text>\n</text>
+      <text class='title_wenben'>报名方式\n</text>
+      <text>1.通过本公众号报名
+2.现场报名
+电话联系人:小海Tel :15375448509
+线上联系人:小选QQ :1287966711\n</text>
+
+      <text>再次重点提醒：参赛的选手们需亲自到达现场进行比赛，一经发现比赛违规，全国禁赛处理！\n
+      
+      
+      </text>
+    </view>
+  </view>
+
+</view>

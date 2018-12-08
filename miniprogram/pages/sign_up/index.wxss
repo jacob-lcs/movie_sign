@@ -1,6 +1,7 @@
 .all{
   margin-left: 50rpx;
   margin-right: 50rpx;
+  
 }
 
 .uploader, .tunnel {
@@ -11,14 +12,27 @@
   box-sizing: border-box;
 }
 
+.all_all{
+  background-image: url('https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/haibao.jpg?sign=83d16b064f37a0ab6ed543da18adb76d&t=1544276376');
+  background-size: 100%
+}
+
 .touxiang{
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 20rpx;
+  
+}
+
+.button_tijiao{
+  background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+
 }
 
 .tou{
-  width: 50%
+  width: 50%;
+  margin-top: 80rpx
 }
 
 .uploader-text, .tunnel-text {

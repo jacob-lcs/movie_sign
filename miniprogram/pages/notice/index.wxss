@@ -1,1 +1,37 @@
 /* miniprogram/pages/notice/index.wxss */
+.movie_title{
+  height: 50rpx;
+}
+
+.image_title{
+  height: 80rpx;
+  width: 80rpx;
+  margin-left: 230rpx
+}
+
+.all_1{
+  background-image: url('https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/jieshao_4.jpg?sign=4ab88b67e03aafa101a9ee4d5777ba89&t=1544281650');
+  background-size: 100%;
+  height: 120rpx;
+}
+
+.all_2{
+  background-image: url('https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/jieshao_3.jpg?sign=970c9cffedd03b94f7e69dd034c2f471&t=1544281623');
+  background-size: 100%;
+}
+
+.wenben{
+  margin-left: 100rpx;
+  margin-right: 100rpx;
+  color: black;
+  font-size: 34rpx
+}
+
+.title_wenben{
+  font-size: 43rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 12rpx
+}

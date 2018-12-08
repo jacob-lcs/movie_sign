@@ -15,6 +15,7 @@ App({
 
   globalData:{
     jianli: false,
-    openid: ''
+    openid: '',
+    userInfo: null
   }
 })

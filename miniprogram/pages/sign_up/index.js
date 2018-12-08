@@ -271,75 +271,65 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  
+
   onLoad: function(options) {
-    wx.cloud.callFunction({
-      name: 'login',
-      complete: res => {
-        console.log('callFunction test result: ', res)
-        app.globalData.openid = res.result.openId
-        db.collection('sign_up').where({
-          _openid: res.result.openId
-        }).get().then(res => {
-          console.log(res.data)
-          if (res.data[0].jianli == true) {
-            app.globalData.jianli = true
-          }
-          face = 'cloud://movie-cf8bc1.6d6f-movie-cf8bc1/' + res.data[0].name + '.png'
-          console.log("face:", face)
-          wx.cloud.downloadFile({
-            fileID: face, // 文件 ID
-            success: res => {
-              // 返回临时文件路径
-              console.log(res.tempFilePath)
-              this.setData({
-                image_url: res.tempFilePath
-              })
-            },
-            fail:console.error
-              
-          })
-          console.log("this.data.image_url:", this.data.image_url)
-          if(this.data.image_url == null){
-            console.log("下载图片函数运行")
-            face = 'cloud://movie-cf8bc1.6d6f-movie-cf8bc1/' + res.data[0].name + '.jpg'
-            wx.cloud.downloadFile({
-              fileID: face, // 文件 ID
-              success: res => {
-                // 返回临时文件路径
-                console.log(res.tempFilePath)
-                this.setData({
-                  image_url: res.tempFilePath
-                })
-              },
-              fail: console.error
-            })
-          
-          }
+    console.log("app.globalData.userInfo.openId", app.globalData.userInfo.openid)
+    db.collection('sign_up').where({
+      _openid: app.globalData.userInfo.openid
+    }).get().then(res => {
+      console.log(res.data)
+      if (res.data[0].jianli == true) {
+        app.globalData.jianli = true
+      }
+      face = 'cloud://movie-cf8bc1.6d6f-movie-cf8bc1/' + res.data[0].name + '.png'
+      console.log("face:", face)
+      wx.cloud.downloadFile({
+        fileID: face, // 文件 ID
+        success: res => {
+          // 返回临时文件路径
+          console.log(res.tempFilePath)
           this.setData({
-            jianli: !app.globalData.jianli,
-            name: res.data[0].name,
-            sex: res.data[0].sex,
-            weight: res.data[0].weight,
-            political: res.data[0].political,
-            height: res.data[0].height,
-            birthday: res.data[0].birthday,
-            marriage: res.data[0].marriage,
-            id_card: res.data[0].id_card,
-            school: res.data[0].school,
-            profession: res.data[0].profession,
-            hobby: res.data[0].hobby,
-            skill: res.data[0].skill,
-            experience: res.data[0].experience,
+            image_url: res.tempFilePath
           })
-          console.log("jianli的值为：", this.data.jianli)
+        },
+        fail: console.error
+
+      })
+      console.log("this.data.image_url:", this.data.image_url)
+      if (this.data.image_url == null) {
+        console.log("下载图片函数运行")
+        face = 'cloud://movie-cf8bc1.6d6f-movie-cf8bc1/' + res.data[0].name + '.jpg'
+        wx.cloud.downloadFile({
+          fileID: face, // 文件 ID
+          success: res => {
+            // 返回临时文件路径
+            console.log(res.tempFilePath)
+            this.setData({
+              image_url: res.tempFilePath
+            })
+          },
+          fail: console.error
         })
 
       }
+      this.setData({
+        jianli: !app.globalData.jianli,
+        name: res.data[0].name,
+        sex: res.data[0].sex,
+        weight: res.data[0].weight,
+        political: res.data[0].political,
+        height: res.data[0].height,
+        birthday: res.data[0].birthday,
+        marriage: res.data[0].marriage,
+        id_card: res.data[0].id_card,
+        school: res.data[0].school,
+        profession: res.data[0].profession,
+        hobby: res.data[0].hobby,
+        skill: res.data[0].skill,
+        experience: res.data[0].experience,
+      })
+      console.log("jianli的值为：", this.data.jianli)
     })
-    
-    
-
   },
 
   /**

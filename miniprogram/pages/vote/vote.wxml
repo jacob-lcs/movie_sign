@@ -1,0 +1,4 @@
+<!--miniprogram/pages/vote/vote.wxml-->
+<view class='all'>
+  <image src='https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/暂未开放_1.jpg?sign=362a0b71bb42444e8f9a944108e8a6c6&t=1544277885' class='image'></image>
+</view>

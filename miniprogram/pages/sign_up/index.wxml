@@ -1,4 +1,6 @@
 <!--miniprogram/pages/sign_up/index.wxml-->
+<view class='all_all'>
+
 <view class="all" wx:if="{{jianli}}">
   <i-panel title="基础用法">
     <i-input value="{{ name }}" bind:change="in_name" title="姓名" autofocus placeholder='请输入姓名'/>
@@ -14,8 +16,8 @@
     <i-input value="{{ profession }}" bind:change='in_profession' title="专业" autofocus placeholder="请输入你的专业" />
     <i-input value="{{ hobby }}" bind:change='in_hobby' title="爱好" autofocus placeholder="请输入你的爱好" />
     <i-input value="{{ skill }}" bind:change='in_skill' title="特长" autofocus placeholder="请输入你的特长" />
-    <i-input value="{{ experience }}" bind:change='in_experience' type="textarea" title="表演及学习经历" placeholder="请输入表演及学习经历(最多300字)" maxlength="300" />
-<i-button bind:click="doUpload" type="success" shape="circle" size="small">点击上传照片</i-button>
+    <i-input value="{{ experience }}" bind:change='in_experience' type="textarea" title="表演及学习经历" placeholder="表演及学习经历(最多300字)" maxlength="300" />
+<i-button bind:click="doUpload" shape="circle" type="success" i-class='button_tijiao' size="small">点击上传照片</i-button>
     <i-button bind:click="tijiao" type="success" shape="circle" size="small">提交</i-button>
 
 
@@ -45,4 +47,5 @@
 
 
   </i-panel>
+</view>
 </view>

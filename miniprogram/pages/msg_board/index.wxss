@@ -1,0 +1,141 @@
+/**index.wxss**/
+@import "../../style/weui.wxss";
+
+.i-card {
+  margin-top: 30rpx;
+}
+.delete{
+    font-size:12px;
+    height:25px;
+    width:50px;
+    padding-left:8px;
+    margin-right: 20px;
+  }
+.chouti {
+  background-color: #f5f5f5;
+  width: 80vw;
+  height: 100vh;
+}
+
+.round-click {
+  font-size: 60rpx;
+  max-width: 80rpx;
+  color: gray;
+  text-align: center;
+}
+.paixu{
+  text-align: right;
+  margin-top: 0rpx;
+}
+.round-click {
+  font-size: 60rpx;
+  max-width: 80rpx;
+  color: gray;
+  text-align: center;
+}
+
+.round-click {
+  height: 85rpx;
+  width: 85rpx;
+  border: 1 solid #696969;
+  border-radius: 100%;
+  border-color: darkgray;
+  position: fixed;
+  bottom: 150rpx;
+  right: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  box-shadow: 4px 4px 6px #696969;
+  /* background: linear-gradient(-255deg, #a8edea ,#fed6e3); */
+  background-color: white;
+}
+
+.round-click1 {
+  height: 85rpx;
+  width: 85rpx;
+  border: 1 solid #696969;
+  border-radius: 100%;
+  border-color: darkgray;
+  position: fixed;
+  bottom: 40rpx;
+  right: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  box-shadow: 4px 4px 6px #696969;
+  /* background: linear-gradient(-255deg, #a8edea ,#fed6e3); */
+  background-color: white;
+  color: gray;
+  font-size: 50rpx;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 50rpx;
+  color: white;
+  text-shadow: 1rpx 1rpx 3rpx black;
+}
+
+.icon2 {
+  height: 60rpx;
+  width: 60rpx;
+  position: fixed;
+  bottom: 0;
+  margin-left: 20rpx;
+}
+
+.icon3 {
+  height: 60rpx;
+  width: 60rpx;
+  position: fixed;
+  bottom: 0;
+  margin-left: 110rpx;
+}
+
+.touxiang {
+  border-radius: 50%;
+  width: 180rpx;
+  height: 180rpx;
+  margin-left: 202rpx;
+  margin-top: 120rpx;
+  border: 8rpx solid white;
+  background-size: 100%
+}
+
+.xuanze {
+  font-size: 40rpx;
+  margin-left: 50rpx;
+}
+
+.zhengwen {
+  line-height: 9vh;
+}
+
+.icon {
+  height: 40rpx;
+  width: 47rpx;
+  margin-left: 20rpx;
+}
+
+.zw {
+  font-size: 35rpx;
+}
+
+.bkct {
+  width: 80vw;
+  height: 500rpx;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url(https://7375-sug-8d3346-1257787229.tcb.qcloud.la/img/下载.jpg?sign=193e6844a975b7d3084634b1166ae3d2&t=1543047501);
+}

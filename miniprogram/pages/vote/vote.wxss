@@ -1,0 +1,9 @@
+/* miniprogram/pages/vote/vote.wxss */
+.all{
+  background-color: black;
+  height: 100vh;
+}
+
+.image{
+  margin-top: 200rpx;
+}

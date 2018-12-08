@@ -6,24 +6,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listData: [{
-        title: '上海大学计算机学院',
-        img: 'http://bmob-cdn-20067.b0.upaiyun.com/2018/07/05/ad2263e640f8bfb5807939ba44c81664.png',
-        text: '上海大学计算机工程与科学学院始建于1988年，由上海工业大学计算机工程系和上海科学技术大学计算机科学系联合成立。',
-      },
-      {
-        title: '自强4000',
-        img: 'http://bmob-cdn-20067.b0.upaiyun.com/2018/07/05/566b620e4017128980fad04e087996f1.png',
-        text: '2013年建成的第三代集群式高性能计算机“自强4000”共有162个节点机，2480个计算核。',
-
-      },
-    ],
+    
     textList: [],
     listNum: 0,
     showLeft1: false,
     x: app.globalData.windowWidth * 0.8 * 0.3,
     y: 30,
-    userinfo: null
+    userinfo: null,
+    background: ['demo-text-1', 'demo-text-2'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    circular: true,
+    interval: 5000,
+    duration: 500,
+    previousMargin: 0,
+    nextMargin: 0
   },
 
   baoming:function(){
@@ -32,11 +30,23 @@ Page({
     })
   },
 
-  contactus:function(){
+  vote:function(){
     wx.navigateTo({
-      url: '/pages/contactus/index',
+      url: '/pages/vote/vote',
     })
   },
+
+  msg_board:function(){
+    wx.navigateTo({
+      url: '/pages/vote/vote',
+    })
+  },
+
+  about_movie:function(){
+    wx.navigateTo({
+      url: '/pages/notice/index',
+    })
+  },  
 
   setDisabled: function(e) {
     this.setData({
@@ -90,7 +100,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("这个用户是不是管理员：",app.globalData.master)
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.userInfo = res.result
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
   },
 
   /**
@@ -103,6 +123,33 @@ Page({
         username: app.globalData.userInfo.nickName
       })
     }
+  },
+
+  changeProperty: function (e) {
+    var propertyName = e.currentTarget.dataset.propertyName
+    var newData = {}
+    newData[propertyName] = e.detail.value
+    this.setData(newData)
+  },
+  changeIndicatorDots: function (e) {
+    this.setData({
+      indicatorDots: !this.data.indicatorDots
+    })
+  },
+  changeAutoplay: function (e) {
+    this.setData({
+      autoplay: !this.data.autoplay
+    })
+  },
+  intervalChange: function (e) {
+    this.setData({
+      interval: e.detail.value
+    })
+  },
+  durationChange: function (e) {
+    this.setData({
+      duration: e.detail.value
+    })
   },
 
   /**
@@ -138,15 +185,6 @@ Page({
    */
   onReachBottom: function() {
 
-  },
-  toggleLeft1() {
-    this.setData({
-      username: app.globalData.userInfo.nickName,
-      avatarUrl: app.globalData.userInfo.avatarUrl
-    })
-    this.setData({
-      showLeft1: !this.data.showLeft1
-    });
   },
   /**
    * 用户点击右上角分享

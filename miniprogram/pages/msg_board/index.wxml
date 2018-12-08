@@ -1,0 +1,51 @@
+<!--index.wxml-->
+<import src="../../style/footer.wxml" />
+
+<view class="round-click"  bindtap='fabiao'>
+  +
+</view>
+
+<view class="page">
+  <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;  ">
+    <view class="page__bd">
+      <view class="weui-panel">
+        <view class="weui-panel__hd">留言列表（{{textList.length}}条）
+          <view class='paixu'>
+            <text space='ensp' bindtap='shijian'> 按时间降序</text>
+            <text bindtap='zanpai'> 按赞降序</text>
+          </view>
+        </view>
+        <view class="weui-panel__bd">
+          <block wx:if="{{textList.length>0}}">
+            <navigator class='i-card' wx:for="{{textList}}" wx:key="textItem" url="/pages/msg_board/detail/index?objectId={{item._id}}">
+
+              <i-card title="{{item.name}}" extra=" {{item.ding}}人赞过 · {{item.classes}}" thumb="{{item.avatarUrl}}">
+                <view class="zw" slot="content">{{ item.content }}</view>
+              </i-card>
+            </navigator>
+          </block>
+
+          <block wx:else>
+            <view class="weui-media-box weui-media-box_text">
+              <view class="weui-media-box__title weui-media-box__title_in-text">
+                暂无内容，欢迎留言哦</view>
+              <view class="weui-media-box__desc"></view>
+
+            </view>
+          </block>
+
+        </view>
+      </view>
+    </view>
+    <view class="page__ft">
+      <view class="page__bd page__bd_spacing">
+        <view class="weui-footer ">
+          <view class="weui-footer__text">Copyright © 2018 安徽蓝娱辰影视文化传媒有限公司</view>
+        </view>
+      </view>
+    </view>
+    <modal hidden="{{hiddenmodalput}}" title="评论" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+      <textarea value='{{pinglun}}' bindinput="sugInput" maxlength='300rpx' placeholder='最长输入140字哦' maxlength='140' />
+    </modal>
+  </scroll-view>
+</view>
