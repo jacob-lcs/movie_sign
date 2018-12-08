@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/first/first",
+    "pages/sign_up/index",
+    "pages/about_us/index",
+    "pages/notice/index",
+    "pages/index/index",
+    "pages/about_movie/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTextStyle": "black"
+  }
+
+}

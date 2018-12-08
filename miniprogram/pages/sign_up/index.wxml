@@ -1,0 +1,48 @@
+<!--miniprogram/pages/sign_up/index.wxml-->
+<view class="all" wx:if="{{jianli}}">
+  <i-panel title="基础用法">
+    <i-input value="{{ name }}" bind:change="in_name" title="姓名" autofocus placeholder='请输入姓名'/>
+    <i-input value="{{ sex }}" bind:change="in_sex" title="性别" autofocus placeholder='请输入性别' />
+    <i-input value="{{ weight }}" bind:change='in_weight' type="number" title="体重" autofocus placeholder="请输入体重（公斤）" />
+    <i-input value="{{ political }}" bind:change='in_political' title="政治面貌" autofocus placeholder="请输入政治面貌" />
+    <i-input value="{{ height }}" bind:change='in_height' type="number" title="身高" autofocus placeholder="请输入身高（cm）" />
+    <i-input value="{{ birthday }}" bind:change='in_birthday' title="出生年月" autofocus placeholder="请输入出生年月" />
+
+    <i-input value="{{ marriage }}" bind:change='in_marriage' title="婚姻状况" autofocus placeholder="请输入婚姻状况" />
+    <i-input value="{{ id_card }}" bind:change='in_id_card' type="number" title="身份证号" placeholder="请输入身份证号" />
+    <i-input value="{{ school }}" bind:change='in_school' title="毕业院校" autofocus placeholder="请输入毕业院校" />
+    <i-input value="{{ profession }}" bind:change='in_profession' title="专业" autofocus placeholder="请输入你的专业" />
+    <i-input value="{{ hobby }}" bind:change='in_hobby' title="爱好" autofocus placeholder="请输入你的爱好" />
+    <i-input value="{{ skill }}" bind:change='in_skill' title="特长" autofocus placeholder="请输入你的特长" />
+    <i-input value="{{ experience }}" bind:change='in_experience' type="textarea" title="表演及学习经历" placeholder="请输入表演及学习经历(最多300字)" maxlength="300" />
+<i-button bind:click="doUpload" type="success" shape="circle" size="small">点击上传照片</i-button>
+    <i-button bind:click="tijiao" type="success" shape="circle" size="small">提交</i-button>
+
+
+  </i-panel>
+</view>
+
+<view class="all" wx:if="{{!jianli}}">
+<view class='touxiang'>
+<image src='{{image_url}}' class='tou'></image>
+</view>
+
+  <i-panel title="基础用法">
+    <i-input value="{{ name }}" bind:change="in_name" title="姓名" disabled/>
+    <i-input value="{{ sex }}" bind:change="in_sex" title="性别"  disabled/>
+    <i-input value="{{ weight }}" bind:change='in_weight' type="number" title="体重" disabled/>
+    <i-input value="{{ political }}" bind:change='in_political' title="政治面貌" disabled/>
+    <i-input value="{{ height }}" bind:change='in_height' type="number" title="身高"  disabled/>
+    <i-input value="{{ birthday }}" bind:change='in_birthday' title="出生年月" disabled/>
+
+    <i-input value="{{ marriage }}" bind:change='in_marriage' title="婚姻状况" disabled/>
+    <i-input value="{{ id_card }}" bind:change='in_id_card' type="number" title="身份证号" disabled/>
+    <i-input value="{{ school }}" bind:change='in_school' title="毕业院校" disabled/>
+    <i-input value="{{ profession }}" bind:change='in_profession' title="专业"  disabled/>
+    <i-input value="{{ hobby }}" bind:change='in_hobby' title="爱好" disabled/>
+    <i-input value="{{ skill }}" bind:change='in_skill' title="特长" disabled/>
+    <i-input value="{{ experience }}" bind:change='in_experience' type="textarea" title="表演及学习经历" maxlength="300"  disabled/>
+
+
+  </i-panel>
+</view>

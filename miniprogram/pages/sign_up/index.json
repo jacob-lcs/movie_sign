@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "报名",
+  "usingComponents": {
+    "i-input": "../../dist/input/index",
+    "i-radio-group": "../../dist/radio-group/index",
+    "i-radio": "../../dist/radio/index",
+    "i-button": "../../dist/button/index",
+    "i-toast": "../../dist/toast/index"
+  }
+}
