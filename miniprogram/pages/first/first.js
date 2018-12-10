@@ -13,7 +13,7 @@ Page({
     x: app.globalData.windowWidth * 0.8 * 0.3,
     y: 30,
     userinfo: null,
-    background: ['demo-text-1', 'demo-text-2'],
+    background: ['demo-text-1'],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
@@ -106,6 +106,8 @@ Page({
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.userInfo = res.result
+        console.log("app.globalData.userInfo", app.globalData.userInfo)
+        
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)

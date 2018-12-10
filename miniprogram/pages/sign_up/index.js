@@ -134,7 +134,7 @@ Page({
         const filePath = res.tempFilePaths[0]
 
         // 上传图片
-        const cloudPath = name + filePath.match(/\.[^.]+?$/)[0]
+        const cloudPath = app.globalData.userInfo.openid + name + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
@@ -281,7 +281,7 @@ Page({
       if (res.data[0].jianli == true) {
         app.globalData.jianli = true
       }
-      face = 'cloud://movie-cf8bc1.6d6f-movie-cf8bc1/' + res.data[0].name + '.png'
+      face = 'cloud://movie-cf8bc1.6d6f-movie-cf8bc1/' + app.globalData.userInfo.openid + res.data[0].name + '.png'
       console.log("face:", face)
       wx.cloud.downloadFile({
         fileID: face, // 文件 ID
@@ -298,7 +298,7 @@ Page({
       console.log("this.data.image_url:", this.data.image_url)
       if (this.data.image_url == null) {
         console.log("下载图片函数运行")
-        face = 'cloud://movie-cf8bc1.6d6f-movie-cf8bc1/' + res.data[0].name + '.jpg'
+        face = 'cloud://movie-cf8bc1.6d6f-movie-cf8bc1/' + app.globalData.userInfo.openid + res.data[0].name + '.jpg'
         wx.cloud.downloadFile({
           fileID: face, // 文件 ID
           success: res => {
