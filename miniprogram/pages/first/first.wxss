@@ -247,7 +247,7 @@ movable-view {
   position: relative;
   align-items: center;
   justify-content: center;
-  background-image: url('https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/title_3.jpg?sign=1558546d8f0265fee76fbcad138906d2&t=1544274690');
+  background-image: url('https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/title_4.jpg?sign=9133f32dd2f0f6ea88c2661a7cb7fe40&t=1544509659');
   background-repeat: no-repeat;
   background-size: 100%;
   color: #fff;
