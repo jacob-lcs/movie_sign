@@ -4,9 +4,10 @@
 <view class="round-click"  bindtap='fabiao'>
   +
 </view>
+<i-toast id="toast" />
 
 <view class="page">
-  <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;  ">
+  <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;">
     <view class="page__bd">
       <view class="weui-panel">
         <view class="weui-panel__hd">留言列表（{{textList.length}}条）
@@ -17,9 +18,9 @@
         </view>
         <view class="weui-panel__bd">
           <block wx:if="{{textList.length>0}}">
-            <navigator class='i-card' wx:for="{{textList}}" wx:key="textItem" url="/pages/msg_board/detail/index?objectId={{item._id}}">
+            <navigator class='i-card' wx:for="{{textList}}" wx:key="textItem" url="/pages/msg_board/detail/index?objectId={{item.objectId}}">
 
-              <i-card title="{{item.name}}" extra=" {{item.ding}}人赞过 · {{item.classes}}" thumb="{{item.avatarUrl}}">
+              <i-card title="{{item.name}}" extra=" {{item.ding}}人赞过 · {{item.classes}}" thumb="{{item.avatarUrl}}" i-class='liulan'>
                 <view class="zw" slot="content">{{ item.content }}</view>
               </i-card>
             </navigator>

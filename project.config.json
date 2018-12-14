@@ -10,7 +10,7 @@
 	},
 	"appid": "wx8777ab3cd1c0b4d1",
 	"projectname": "dying_sign",
-	"libVersion": "2.2.5",
+	"libVersion": "2.4.2",
 	"condition": {
 		"search": {
 			"current": -1,

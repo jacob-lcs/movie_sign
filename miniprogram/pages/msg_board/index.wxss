@@ -4,6 +4,30 @@
 .i-card {
   margin-top: 30rpx;
 }
+
+.page{
+  background-color: black;
+  color: white;
+  height: 100vh;
+}
+
+.liulan{
+  background-color: black;
+  color: white;
+  font-style: white;
+}
+
+.weui-panel{
+  background-color: black;
+}
+.weui-panel__hd{
+  background-color: black;
+}
+
+.weui-panel__bd{
+  background-color: black;
+}
+
 .delete{
     font-size:12px;
     height:25px;
@@ -130,6 +154,7 @@
 
 .zw {
   font-size: 35rpx;
+  color: white;
 }
 
 .bkct {

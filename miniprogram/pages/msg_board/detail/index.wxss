@@ -9,9 +9,10 @@ page {
   position: absolute;
   top: 354rpx;
   display: block;
-  background-color: #fff;
+  background-color: black;
   width: 100%; 
   border-radius: 50rpx 50rpx 0 0;
+  color: white;
 }
 
 .Title {
@@ -50,7 +51,7 @@ page {
 
 .zans{
   margin-top: 15rpx;
-  color: rgba(0, 0, 0, 0.5);
+  color: white;
   font-size: 13px;
 }
 
@@ -59,7 +60,7 @@ page {
   margin-right: 40rpx;
   text-align: right;
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .text_content{
@@ -106,8 +107,9 @@ page {
 
 .titleImage{
   /* background-image: linear-gradient(to bottom,#20B2AA,white); */
-   background-image: url('http://bmob-cdn-20067.b0.upaiyun.com/2018/07/05/fc481f5640dd378280fd3ec6148a8903.png');
-  background-size: 750rpx;
+   background-image: url('https://6d6f-movie-cf8bc1-1258251683.tcb.qcloud.la/image/beijing_4.jpg?sign=c6b69fba63d44d44d81b5aec2621ed98&t=1544720551');
+  background-size: 1300rpx;
+  /* width: 100vw; */
   height: 100vh;
   position: fixed;
   top: 0;

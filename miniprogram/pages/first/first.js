@@ -38,7 +38,7 @@ Page({
 
   msg_board:function(){
     wx.navigateTo({
-      url: '/pages/vote/vote',
+      url: '/pages/msg_board/index',
     })
   },
 

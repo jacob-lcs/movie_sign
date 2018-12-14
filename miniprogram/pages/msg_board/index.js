@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
-
+const { $Toast } = require('../../dist/base/index');
+var Bmob = require('../../dist/Bmob-1.6.7.min.js');
+Bmob.initialize("2a182fee9b5c946700073639ac0d6dc8", "360e735e98a5ea253458f0695df5fad5");
 const db = wx.cloud.database()
 var common = require('../../dist/common.js');
 var pinglun = '';
@@ -13,7 +15,6 @@ Page({
 
     textList: {},
     shijian: false,
-    classes: ['全部', '教学', '后勤', '课余', '其他'],
     index: 0,
     current: '全部',
     current_scroll: '全部',
@@ -49,48 +50,58 @@ Page({
 
 
   confirm: function() {
+   
     pinglun = this.data.pinglun
     this.setData({
       hiddenmodalput: true
     })
-    //插入一条评论数据
-    const comments_collection = db.collection('qyzx_texts');
-    comments_collection.add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-        due: new Date(),
-        content: pinglun,
-        commentator: app.globalData.userInfo.nickName,
-        deleted: false,
-        ding: 0
-      },
-      success: function(res) {
-        console.log(res)
-        $Toast({
-          content: '友善发言的人运气不会太差。',
-          type: 'success'
-        });
-      },
-      fail: function(err) {
-        console.log(err)
-        $Toast({
-          content: '提交失败,请检查网络',
-          type: 'error'
-        });
-      }
-    })
-
-    const comments_collection2 = db.collection('qyzx_texts');
-    comments_collection2.where({
-        textID: this.data.textId
-      }).orderBy('due', 'desc')
-      .get().then(res => {
-        console.log('按时间排序后：', res.data)
-        this.setData({
-          'commentList': res.data
-        })
-        console.log('commentList:', this.data.commentList)
+    const query = Bmob.Query('texts');
+    query.set("content", pinglun)
+    query.set("deleted", false)
+    query.set("ding", 0)
+    query.set("openid", app.globalData.userInfo.openid)
+    query.save().then(res => {
+      console.log(res)
+      $Toast({
+        content: '友善发言的人运气不会太差。',
+        type: 'success'
       });
+      wx.redirectTo({
+        url: '/pages/msg_board/index',
+      })
+    }).catch(err => {
+      console.log(err)
+      $Toast({
+        content: '提交失败,请检查网络',
+        type: 'error'
+      });
+    })
+    //插入一条评论数据
+    // const comments_collection = db.collection('qyzx_texts');
+    // comments_collection.add({
+    //   // data 字段表示需新增的 JSON 数据
+    //   data: {
+    //     due: new Date(),
+    //     content: pinglun,
+    //     commentator: app.globalData.userInfo.nickName,
+    //     deleted: false,
+    //     ding: 0
+    //   },
+    //   success: function(res) {
+    //     console.log(res)
+    //     $Toast({
+    //       content: '友善发言的人运气不会太差。',
+    //       type: 'success'
+    //     });
+    //   },
+    //   fail: function(err) {
+    //     console.log(err)
+    //     $Toast({
+    //       content: '提交失败,请检查网络',
+    //       type: 'error'
+    //     });
+    //   }
+    // })
   },
 
   cancel: function() {
@@ -115,38 +126,65 @@ Page({
     })
   },
 
-  onReachBottom: function() {
-    console.log("onReachBottom函数运行！")
-    const _ = db.command
-    if (this.data.shijian == false) {
-      db.collection("qyzx_texts").where({
-        _id: _.nin(idd),
-        deleted: false
-      }).get().then(res => {
-        console.log(res)
-        for (var index in res.data) {
-          idd.push(res.data[index]._id)
-        }
-        this.setData({
-          textList: this.data.textList.concat(res.data)
-        })
-      })
-    } else {
-      db.collection("qyzx_texts").where({
-        _id: _.nin(idd),
-        deleted: false
-      }).orderBy('due', 'desc').get().then(res => {
-        console.log(res)
-        for (var index in res.data) {
-          idd.push(res.data[index]._id)
-        }
-        this.setData({
-          textList: this.data.textList.concat(res.data)
-        })
-      })
-    }
+  // onReachBottom: function() {
+  //   const query = Bmob.Query('texts');
+  //   console.log("onReachBottom函数运行！")
+  //   const _ = db.command
+  //   if (this.data.shijian == false) {
+  //     query.notContainedIn("objectId", idd);
+  //     query.equalTo("deleted", "==", false);
+  //     query.order("-score");
+  //     query.find().then(res => {
+  //       console.log(res)
+  //       for (var index in res.data) {
+  //         idd.push(res.data[index].objectId)
+  //       }
+  //       this.setData({
+  //         textList: this.data.textList.concat(res.data)
+  //       })
+  //     });
+  //     // db.collection("qyzx_texts").where({
+  //     //   _id: _.nin(idd),
+  //     //   deleted: false
+  //     // }).get().then(res => {
+  //     //   console.log(res)
+  //     //   for (var index in res.data) {
+  //     //     idd.push(res.data[index]._id)
+  //     //   }
+  //     //   this.setData({
+  //     //     textList: this.data.textList.concat(res.data)
+  //     //   })
+  //     // })
+  //   } else {
 
-  },
+  //     query.equalTo("deleted", "==", false);
+  //     query.ContainedIn("objectId", idd);
+  //     query.order("-createdAt");
+  //     query.find().then(res => {
+  //       console.log(res)
+  //       for (var index in res.data) {
+  //         idd.push(res.data[index].objectId)
+  //       }
+  //       this.setData({
+  //         textList: this.data.textList.concat(res.data)
+  //       })
+  //     });
+      
+  //     // db.collection("qyzx_texts").where({
+  //     //   _id: _.nin(idd),
+  //     //   deleted: false
+  //     // }).orderBy('due', 'desc').get().then(res => {
+  //     //   console.log(res)
+  //     //   for (var index in res.data) {
+  //     //     idd.push(res.data[index]._id)
+  //     //   }
+  //     //   this.setData({
+  //     //     textList: this.data.textList.concat(res.data)
+  //     //   })
+  //     // })
+  //   }
+
+  // },
 
   home: function() {
     wx.navigateTo({
@@ -166,15 +204,6 @@ Page({
     })
   },
 
-  toggleLeft1() {
-    this.setData({
-      username: app.globalData.userInfo.nickName,
-      avatarUrl: app.globalData.userInfo.avatarUrl
-    })
-    this.setData({
-      showLeft1: !this.data.showLeft1
-    });
-  },
   handleChange({
     detail
   }) {
@@ -189,44 +218,8 @@ Page({
     })
   },
 
-  handleChangeScroll({
-    detail
-  }) {
-    this.setData({
-      current_scroll: detail.key
-    });
-
-    //点击顶部分类栏，显示各分类下的帖子
-    const texts_collection = app.globalData.db.collection('qyzx_texts')
-
-    if (detail.key == "全部") {
-      texts_collection.orderBy('ding', 'desc').where({
-        deleted: false
-      }).get().then(res => {
-        this.setData({
-          textList: res.data
-        })
-      })
-    } else {
-      texts_collection.where({
-          classes: detail.key,
-          deleted: false
-        }).orderBy('ding', 'desc')
-        .get().then(res => {
-          this.setData({
-            textList: res.data
-          })
-        })
-    }
-  },
-
   onReady: function(e) {
 
-    if (app.globalData.userInfo != null) {
-      this.setData({
-        username: app.globalData.userInfo.nickName
-      })
-    }
   },
 
   onShareAppMessage: function() {},
@@ -257,38 +250,36 @@ Page({
       shijian: true
     })
 
-    const texts_collection = db.collection('qyzx_texts')
-    if (this.data.current_scroll == "全部") {
-      texts_collection.orderBy('due', 'desc').where({
-          deleted: false
-        })
-        .get().then(res => {
-          this.setData({
-            textList: res.data
-          })
-          for (var index in res.data) {
-            console.log("index:", res.data[index]._id)
-            idd[index] = res.data[index]._id
-          };
-          console.log("ID数组为：", idd)
-        })
-    } else {
-      texts_collection.where({
-          classes: this.data.current_scroll
-        }).where({
-          deleted: false
-        }).orderBy('due', 'desc')
-        .get().then(res => {
-          this.setData({
-            textList: res.data
-          })
-          for (var index in res.data) {
-            console.log("index:", res.data[index]._id)
-            idd[index] = res.data[index]._id
-          };
-          console.log("ID数组为：", idd)
-        })
-    }
+    const query = Bmob.Query('texts');
+
+    query.equalTo("deleted", "==", false);
+    query.order("-createdAt");
+    query.find().then(res => {
+      console.log(res)
+      this.setData({
+        textList: res
+      })
+      for (var index in res) {
+        console.log("index:", res[index].objectId)
+        idd[index] = res[index].objectId
+      };
+      console.log("ID数组为：", idd)
+    });
+
+    // const texts_collection = db.collection('qyzx_texts')
+    //   texts_collection.orderBy('due', 'desc').where({
+    //       deleted: false
+    //     })
+    //     .get().then(res => {
+    //       this.setData({
+    //         textList: res.data
+    //       })
+    //       for (var index in res.data) {
+    //         console.log("index:", res.data[index]._id)
+    //         idd[index] = res.data[index]._id
+    //       };
+    //       console.log("ID数组为：", idd)
+    //     })
   },
 
   //按赞排序
@@ -300,77 +291,37 @@ Page({
 
   onShow: function() {
     var i = 0;
-
-    const texts_collection = db.collection('qyzx_texts')
-
-    if (this.data.current_scroll == "全部") {
-      texts_collection.orderBy('ding', 'desc').where({
-        deleted: false
-      }).get().then(res => {
+    const query = Bmob.Query('texts');
+    
+    // const texts_collection = db.collection('qyzx_texts')
+      
+      query.equalTo("deleted", "==", false);
+      query.order("-ding");
+      query.find().then(res => {
+        console.log(res)
         this.setData({
-          textList: res.data
+          textList: res
         })
-        for (var index in res.data) {
-          console.log("index:", res.data[index]._id)
-          idd[index] = res.data[index]._id
+        for (var index in res) {
+          console.log("index:", res[index].objectId)
+          idd[index] = res[index].objectId
         };
         console.log("ID数组为：", idd)
-      })
+      });
+    console.log("textList:", this.data.textList);
 
-    } else {
-      texts_collection.where({
-          classes: this.data.current_scroll
-        }).where({
-          deleted: false
-        }).orderBy('ding', 'desc')
-        .get().then(res => {
-          this.setData({
-            textList: res.data
-          });
 
-          for (var index in res.data) {
-            console.log("index:", res.data[index]._id)
-            idd[index] = res.data[index]._id
-          };
-          console.log("ID数组为：", idd)
-        })
-    };
+      // texts_collection.orderBy('ding', 'desc').where({
+      //   deleted: false
+      // }).get().then(res => {
+      //   this.setData({
+      //     textList: res.data
+      //   })
+      //   for (var index in res.data) {
+      //     console.log("index:", res.data[index]._id)
+      //     idd[index] = res.data[index]._id
+      //   };
+      //   console.log("ID数组为：", idd)
+      // })
   }
 })
-
-function getLike(t, k) {
-  var that = t;
-
-  if (k == "")
-    that.onShow();
-
-  const MAX_LIMIT = 20
-
-  db.collection('qyzx_texts').count().then(res => {
-    // 计算需分几次取
-    const batchTimes = Math.ceil(res.total / 20)
-    var searchResult = []
-    for (let i = 0; i < batchTimes; i++) {
-      db.collection('qyzx_texts').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get().then(res => {
-        for (var index in res.data) {
-          idd.push(res.data[index]._id)
-        }
-        for (let j = 0; j < res.data.length; j++) {
-          if (res.data[j].content.indexOf(k) >= 0) {
-            console.log(res.data[j].content)
-            searchResult.push(res.data[j])
-            that.setData({
-              textList: null,
-              textList: searchResult,
-            })
-          };
-        }
-      })
-    }
-    if (searchResult.length == 0)
-      that.setData({
-        textList: null
-      })
-    console.log("查询结果：", searchResult)
-  })
-}
